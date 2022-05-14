@@ -66,13 +66,14 @@ def mp_segment(img_path, IMAGE_FILES, new_files_location):
                 image = cv2.flip(cv2.imread(img_path + "/" + file), 1)
                 # Convert the BGR image to RGB before processing.
                 results = hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-
-                if not results.multi_hand_landmarks:
-                    continue
                 # Image dimensions
                 image_height, image_width, image_channel = image.shape
                 target_size = (image_height, image_width)
+                # Background image to draw on
                 annotated_image = cv2.resize(background_img.copy(), target_size)
+                if not results.multi_hand_landmarks:
+                    cv2.imwrite(new_files_location + "/" + file, cv2.flip(annotated_image, 1))
+                    continue
 
                 for hand_landmarks in results.multi_hand_landmarks:
                     mp_drawing.draw_landmarks(
@@ -84,7 +85,6 @@ def mp_segment(img_path, IMAGE_FILES, new_files_location):
                     )
                 # Save the processed image
                 cv2.imwrite(new_files_location + "/" + file, cv2.flip(annotated_image, 1))
-
 
 
 # Function to predict an image
@@ -223,6 +223,10 @@ def display_img(img_path):
         for x, file in zip(range(file_number), files):
             ax = plt.subplot(int(file_number/2) + 1, 2, x + 1)
             img = Image.load_img(os.path.join(img_path, file), target_size = target_size)
+            plt.title(file, 
+                size=18, 
+                color='black'
+            )
             plt.imshow(img)
             plt.axis("off")
             plt.tight_layout(h_pad=2)
