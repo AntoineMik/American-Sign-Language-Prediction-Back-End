@@ -111,7 +111,7 @@ def prediction(image_data, model):
     if (float(predicted_probabilities[index]) > 80):
         prediction_result = "Prediction-Confident : {} \n Probability : {}%".format(str(class_names[index]).title(), predicted_probabilities[index])
         plt.title(prediction_result, 
-            size=18, 
+            size=30, 
             color='green'
         )
         plt.imshow(image_data)
@@ -119,21 +119,21 @@ def prediction(image_data, model):
     elif (float(predicted_probabilities[index]) < 81  and float(predicted_probabilities[index]) > 50):
         prediction_result = "Prediction-Moderate : {} \n Probability : {}%".format(str(class_names[index]).title(), predicted_probabilities[index])
         plt.title(prediction_result, 
-            size=18, 
+            size=30, 
             color='blue'
         )
         plt.imshow(image_data)
     elif(float(predicted_probabilities[index]) < 51  and float(predicted_probabilities[index]) > 30):
         prediction_result = "Prediction-Low Confidence : {} \n Probability : {}%".format(str(class_names[index]).title(), predicted_probabilities[index])
         plt.title(prediction_result, 
-            size=18, 
+            size=30, 
             color='red'
         )
         plt.imshow(image_data)
     else:
         prediction_result = "hum... I didn't quite get that, please try again"
         plt.title(prediction_result, 
-            size=18, 
+            size=30, 
             color='red'
         )
         plt.imshow(image_data)
@@ -224,7 +224,7 @@ def display_img(img_path):
             ax = plt.subplot(int(file_number/2) + 1, 2, x + 1)
             img = Image.load_img(os.path.join(img_path, file), target_size = target_size)
             plt.title(file, 
-                size=18, 
+                size=30, 
                 color='black'
             )
             plt.imshow(img)
