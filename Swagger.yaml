@@ -1,0 +1,49 @@
+openapi: 3.0.1   # Open api version
+
+info:   # Set basic infomation
+  title: ASL Predict MediaPipe Inceptionv3
+  version: 0.1.1
+  contact:
+    Name: Antoine Vignon
+    Email: vignonantoinem@gmail.com
+  Description:
+    Predict American Sign Language numbers and alphabet using MediaPipe and Inceptionv3 
+
+servers:   # Set your server endpoint
+  - url: https://main-american-sign-language-prediction-back-end-antoine-mik.endpoint.ainize.ai
+
+paths:
+  /:   # Post method path
+    post:
+      requestBody:
+        required: true
+        summary: Check server status
+        description: Check the server is running
+      content:   # Set parameter values here
+        multipart/form-data:  # Set parameter name
+          schema:
+            type: object
+            properties:
+              length:
+                type: int
+                description: "Number of random images"
+            required:
+              - length
+      responses:   # Set response
+        '200':
+          description: Successful Response
+          content:   # Descriptions of potential response payloads (optional)
+            application/json:
+              schema:   # Set data types
+                type: object
+                properties:
+                  score:
+                    type: number
+        '400':
+          description: Bad Request Error
+        '500':
+          description: Server-side Error
+        '503':
+          description: Server is not ready
+        default: 
+          description: Unexpected Error 
