@@ -1,12 +1,11 @@
-
 # Importing necessary libraries
 from tensorflow.keras.preprocessing import image as Image
 from PIL import Image as pilimage
 import numpy as np
+import mediapipe as mp
 from keras.models import load_model
 import os
 import cv2
-import mediapipe as mp
 import matplotlib.pyplot as plt
 import glob, random
 
