@@ -14,12 +14,22 @@ original_path = "datasets/asl_test_dataset/*.jpeg"
 # Processed dataset path
 original_processed_path = "datasets/asl_processed_test_dataset/*.jpeg"
 
+# Processed test images
+processed_test_data_dir = "datasets/asl_processed_test_dataset"
+# Test images dir
+test_data_dir = "datasets/asl_test_dataset"
+
 # Test user raw data location
 user_test_path = "datasets/user_test_data"
 
 # Location of the new processed user test data
 user_processed_path = "datasets/user_processed_test_dataset"
 
+# Size of random images
+size = len(os.listdir(processed_test_data_dir))
+
+def get_len():
+    return size
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -144,12 +154,13 @@ def rand_img(path):
 
 # Show random predictions
 def show_rand_pred(num, file_path):
-    fig = plt.figure(figsize=(15, 20))
+    fig = plt.figure(figsize=(20, 2*num + 20))
     for x in range(num):
-        ax = plt.subplot(4, 3, x + 1)
+        ax = plt.subplot(int(num/2) + 1, 2, x + 1)
         _, img = rand_img(file_path)
         prediction(img, model)
         plt.axis("off")
+        plt.tight_layout(h_pad=2)
     return fig
 
 def create_empty_dir(path):
@@ -205,27 +216,31 @@ def generate_user_processed(size):
 
 # Display images in a location
 def display_img(img_path):
-    fig = plt.figure(figsize=(15, 20))
     files = os.listdir(img_path)
+    file_number = len(files)
+    fig = plt.figure(figsize=(20, 2*file_number + 20))
     if files:
-        for x, file in zip(range(len(files)), files):
-            ax = plt.subplot(4, 3, x + 1)
+        for x, file in zip(range(file_number), files):
+            ax = plt.subplot(int(file_number/2) + 1, 2, x + 1)
             img = Image.load_img(os.path.join(img_path, file), target_size = target_size)
             plt.imshow(img)
             plt.axis("off")
+            plt.tight_layout(h_pad=2)
         return fig
     return False
 
 
 # Predict processed images from location
 def predict_img(img_path):
-    fig = plt.figure(figsize=(15, 20))
     files = os.listdir(img_path)
+    file_number = len(files)
+    fig = plt.figure(figsize=(20, 2*file_number + 20))
     if files:
-        for x, file in zip(range(len(files)), files):
-            ax = plt.subplot(4, 3, x + 1)
+        for x, file in zip(range(file_number), files):
+            ax = plt.subplot(int(file_number/2) + 1, 2, x + 1)
             img = Image.load_img(os.path.join(img_path, file), target_size = target_size)
             prediction(img, model)
             plt.axis("off")
+            plt.tight_layout(h_pad=2)
         return fig
     return False

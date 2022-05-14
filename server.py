@@ -73,10 +73,20 @@ def main():
 
     return result
 
+# Get the size of images
+@app.route("/images/size", methods=["GET"])
+def get_size():
+    size = get_len()
+    return jsonify(size)
+
+
+
 # Health Check
 @app.route("/check", methods=["GET"])
 def healthCheck():
     return "Server Operational", 200
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")

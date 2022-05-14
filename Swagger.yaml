@@ -22,10 +22,10 @@ paths:
       content:   # Set parameter values here
         multipart/form-data:  # Set parameter name
           schema:
-            type: object
+            type: number
             properties:
               length:
-                type: int
+                type: number
                 description: "Number of random images"
             required:
               - length
@@ -38,7 +38,151 @@ paths:
                 type: object
                 properties:
                   score:
-                    type: number
+                    type: string
+        '400':
+          description: Bad Request Error
+        '500':
+          description: Server-side Error
+        '503':
+          description: Server is not ready
+        default: 
+          description: Unexpected Error 
+
+  /images/random:
+    post:
+      requestBody:
+        required: true
+        summary: Get random images
+        description: Get random images
+      content:   # Set parameter values here
+        multipart/form-data:  # Set parameter name
+          schema:
+            type: number
+            properties:
+              length:
+                type: number
+                description: "Number of random images"
+            required:
+              - length
+      responses:   # Set response
+        '200':
+          description: Successful Response
+          content:   # Descriptions of potential response payloads (optional)
+            application/json:
+              schema:
+                type: object
+                properties:
+                  score:
+                    type: string
+                    
+        '400':
+          description: Bad Request Error
+        '500':
+          description: Server-side Error
+        '503':
+          description: Server is not ready
+        default: 
+          description: Unexpected Error 
+
+  /images/process:
+    post:
+      requestBody:
+        required: true
+        summary: Get random processed images
+        description: Get random processed images
+      content:   # Set parameter values here
+        multipart/form-data:  # Set parameter name
+          schema:
+            type: number
+            properties:
+              length:
+                type: number
+                description: "Number of random images"
+            required:
+              - length
+      responses:   # Set response
+        '200':
+          description: Successful Response
+          content:   # Descriptions of potential response payloads (optional)
+            application/json:
+              schema:
+                type: object
+                properties:
+                  score:
+                    type: string
+                    
+        '400':
+          description: Bad Request Error
+        '500':
+          description: Server-side Error
+        '503':
+          description: Server is not ready
+        default: 
+          description: Unexpected Error 
+
+  /images/predict:
+    post:
+      requestBody:
+        required: true
+        summary: Get predicted images
+        description: Get random predicted images
+      content:   # Set parameter values here
+        multipart/form-data:  # Set parameter name
+          schema:
+            type: number
+            properties:
+              length:
+                type: number
+                description: "Number of random images"
+            required:
+              - length
+      responses:   # Set response
+        '200':
+          description: Successful Response
+          content:   # Descriptions of potential response payloads (optional)
+            application/json:
+              schema:
+                type: object
+                properties:
+                  score:
+                    type: string
+                    
+        '400':
+          description: Bad Request Error
+        '500':
+          description: Server-side Error
+        '503':
+          description: Server is not ready
+        default: 
+          description: Unexpected Error 
+
+  /images/random/predict:
+    post:
+      requestBody:
+        required: true
+        summary: Get random predicted images
+        description: Get random predicted images
+      content:   # Set parameter values here
+        multipart/form-data:  # Set parameter name
+          schema:
+            type: number
+            properties:
+              length:
+                type: number
+                description: "Number of random images"
+            required:
+              - length
+      responses:   # Set response
+        '200':
+          description: Successful Response
+          content:   # Descriptions of potential response payloads (optional)
+            application/json:
+              schema:
+                type: object
+                properties:
+                  score:
+                    type: string
+                    
         '400':
           description: Bad Request Error
         '500':
