@@ -25,7 +25,7 @@ def raw():
             rand_img = display_img(user_test_path)
             rand_img.savefig("./user_rand.jpg")
         else:
-            return jsonify({'message': "Could not generate processed images"}), 700
+            return jsonify({'message': "Could not generate random images"}), 700
     except Exception as e:
         return jsonify({'message': 'Server could not save random images'}), 700
     

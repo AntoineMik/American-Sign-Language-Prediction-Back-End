@@ -10,20 +10,20 @@ import matplotlib.pyplot as plt
 import glob, random
 
 # Path tho the dataset of images
-original_path = "datasets/asl_test_dataset/*.jpeg"
+original_path = "./datasets/asl_test_dataset/*.jpeg"
 # Processed dataset path
-original_processed_path = "datasets/asl_processed_test_dataset/*.jpeg"
+original_processed_path = "./datasets/asl_processed_test_dataset/*.jpeg"
 
 # Processed test images
-processed_test_data_dir = "datasets/asl_processed_test_dataset"
+processed_test_data_dir = "./datasets/asl_processed_test_dataset"
 # Test images dir
-test_data_dir = "datasets/asl_test_dataset"
+test_data_dir = "./datasets/asl_test_dataset"
 
 # Test user raw data location
-user_test_path = "datasets/user_test_data"
+user_test_path = "./datasets/user_test_data"
 
 # Location of the new processed user test data
-user_processed_path = "datasets/user_processed_test_dataset"
+user_processed_path = "./datasets/user_processed_test_dataset"
 
 # Size of random images
 size = len(os.listdir(processed_test_data_dir))
