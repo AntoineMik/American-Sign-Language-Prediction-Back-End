@@ -36,14 +36,14 @@ mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
 # Define arguments for the Model
-height = 300
-width = 300
+height = 400
+width = 400
 channels = 3
 batch_size = 512
 target_shape = (height, width, channels)
 target_size = (height, width)
 class_names = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h',
- 'i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+ 'i','j','k','l','m','n','no_hand','o','p','q','r','s','t','u','v','w','x','y','z']
 num_classes = len(class_names)
 
 # Background image to draw hand landmarks on
