@@ -1,6 +1,7 @@
 FROM maiv/sign-language-detection:latest
 
 LABEL Antoine Vignon <vignonantoinem@gmail.com>
+USER root
 
 WORKDIR /project
 RUN mkdir ./datasets/user_test_data
