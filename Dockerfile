@@ -1,4 +1,4 @@
-FROM maiv/handsigndetect:latest
+FROM maiv/sign-language-detection:latest
 
 LABEL Antoine Vignon <vignonantoinem@gmail.com>
 
