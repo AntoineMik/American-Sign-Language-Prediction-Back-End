@@ -7,7 +7,10 @@ app = Flask(__name__)
 
 @app.route('/images/<path:path>')
 def func_send_image(path):
-    return send_file(path, mimetype='image/jpeg')
+    try:
+        return send_file(path, mimetype='image/jpeg')
+    except Exception as e:
+        return jsonify({'message': 'Server could not send file'}), 800
 
 # Generate random images based on length
 @app.route("/images/random", methods=["POST"])
