@@ -191,3 +191,29 @@ paths:
           description: Server is not ready
         default: 
           description: Unexpected Error 
+
+  /check:
+    Get:
+      requestBody:
+        required: false
+        summary: Check server status
+      content:   # Set parameter values here
+      responses:   # Set response
+        '200':
+          description: Successful Response
+          content:   # Descriptions of potential response payloads (optional)
+            application/json:
+              schema:
+                type: object
+                properties:
+                  score:
+                    type: string
+                    
+        '400':
+          description: Bad Request Error
+        '500':
+          description: Server-side Error
+        '503':
+          description: Server is not ready
+        default: 
+          description: Unexpected Error 

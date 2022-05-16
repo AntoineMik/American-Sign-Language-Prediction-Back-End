@@ -72,7 +72,7 @@ def mp_segment(img_path, IMAGE_FILES, new_files_location):
                 # Background image to draw on
                 annotated_image = cv2.resize(background_img.copy(), target_size)
                 if not results.multi_hand_landmarks:
-                    cv2.imwrite(new_files_location + "/" + file, cv2.flip(annotated_image, 1))
+                    cv2.imwrite(new_files_location + "/Could_not_segment" + file, cv2.flip(annotated_image, 1))
                     continue
 
                 for hand_landmarks in results.multi_hand_landmarks:
