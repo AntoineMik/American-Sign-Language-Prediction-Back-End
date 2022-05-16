@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/images/<path:path>')
 def func_send_image(path):
     try:
-        return send_file(path, mimetype='image/jpeg')
+        return send_file("./" + path, mimetype='image/jpeg')
     except Exception as e:
         return jsonify({'message': 'Server could not send file'}), 800
 
@@ -23,14 +23,14 @@ def raw():
     try:
         if generate_user_raw(length):
             rand_img = display_img(user_test_path)
-            rand_img.savefig("user_rand.jpg")
+            rand_img.savefig("./user_rand.jpg")
         else:
             return jsonify({'message': "Could not generate processed images"}), 700
     except Exception as e:
         return jsonify({'message': 'Server could not save random images'}), 700
     
     try:
-        return send_file("user_rand.jpg", mimetype='image/jpeg')
+        return send_file("./user_rand.jpg", mimetype='image/jpeg')
     except Exception as e:
         return jsonify({'message': 'Server could not send file'}), 800
 
@@ -46,14 +46,14 @@ def proc():
     try:
         if generate_user_processed(length):
             rand_img = display_img(user_processed_path)
-            rand_img.savefig("process_rand.jpg")
+            rand_img.savefig("./process_rand.jpg")
         else:
             return jsonify({'message': "Could not generate processed images"}), 700
     except Exception as e:
         return jsonify({'message': 'Server could not save processed images'}), 700
 
     try:
-        return send_file("process_rand.jpg", mimetype='image/jpeg')
+        return send_file("./process_rand.jpg", mimetype='image/jpeg')
     except Exception as e:
         return jsonify({'message': 'Server could not send file'}), 800
 
@@ -71,12 +71,12 @@ def pred():
         if not prediction_img:
             return jsonify({'Failed': "Please Generate random images before prediction"}), 600
         else:
-            prediction_img.savefig("user_pred.jpg")
+            prediction_img.savefig("./user_pred.jpg")
     except Exception as e:
         return jsonify({'message': 'Server could not save predicted images'}), 700
 
     try:
-        return send_file("user_pred.jpg", mimetype='image/jpeg')
+        return send_file("./user_pred.jpg", mimetype='image/jpeg')
     except Exception as e:
         return jsonify({'message': 'Server could not send file'}), 800
 
@@ -91,12 +91,12 @@ def rand():
 
     try:
         prediction_img = show_rand_pred(length, original_processed_path)
-        prediction_img.savefig("rand_pred.jpg")
+        prediction_img.savefig("./rand_pred.jpg")
     except Exception as e:
         return jsonify({'message': 'Server could not save predicted images'}), 700
     
     try:
-        return send_file("rand_pred.jpg", mimetype='image/jpeg')
+        return send_file("./rand_pred.jpg", mimetype='image/jpeg')
     except Exception as e:
         return jsonify({'message': 'Server could not send file'}), 800 
 
