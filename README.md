@@ -1,5 +1,7 @@
 # American-Sign-Language-Prediction-Back-End
 
+[![Run The Project on Ainize](https://ainize.ai/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=https://github.com/AntoineMik/American-Sign-Language-Prediction)
+
 ### Introduction
 Back end server for the sign language prediction project is available here:
 https://github.com/AntoineMik/American-Sign-Language-Prediction
